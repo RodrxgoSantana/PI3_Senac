@@ -16,7 +16,7 @@ insert into vendedor values ('Rodrega',"3",'Gerente',"teste123",'Gerente','Sao P
 
 
 CREATE TABLE relatorios (
-    id_relatorio int(40),
+    id_relatorio int not null auto_incremente primary key,
     cliente varchar(50),
     vendedor varchar(50),
     produto varchar(100),
@@ -31,7 +31,7 @@ insert into Relatorios values ("1",'Jose da silva','Rodrigo','Jack Daniels','des
 
 
 CREATE TABLE produto (
-    id_produto integer,
+    id_produto int not null auto_increment primary key,
     nomeProduto varchar(50),
     precoProduto int,
     quantidade integer,
@@ -55,7 +55,7 @@ insert into cliente values("1",'Rodrigo',"49071338800","5013947200","942211106",
 insert into cliente values("4",'Rodrigo',"49071322800","5013947122","942211106",'rodrigo@gmail.com','Julio de barros',"373",'Sao Paulo');
 
 CREATE TABLE venda(
-id_venda int primary key not null,
+id_venda int auto_increment primary key not null,
 id_cliente int,
 id_vendedor int,
 id_produto integer,
