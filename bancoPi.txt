@@ -1,0 +1,68 @@
+create database fivetech;
+use fivetech;
+
+CREATE TABLE vendedor (
+    nome_vendedor varchar(40),
+    id_vendedor int not null auto_increment PRIMARY KEY,
+    usuario varchar(20),
+    senha varchar(100),
+    cargo varchar(30),
+    filial varchar(50),
+    departamento varchar(50)
+);
+insert into vendedor values ('Rodrigo',"5",'admin','teste123','admin','Sao Paulo','Vendas');
+insert into vendedor values ("Rodrega","2","admin","teste123","admin","Sao Paulo","Admin");
+insert into vendedor values ('Rodrega',"3",'Gerente',"teste123",'Gerente','Sao Paulo','Admin');
+
+
+CREATE TABLE relatorios (
+    id_relatorio int(40),
+    cliente varchar(50),
+    vendedor varchar(50),
+    produto varchar(100),
+    categoria_produto varchar(30),
+    id_venda int not null,
+    filial varchar(50),
+    qtdVenda int not null,
+    data_venda date
+);
+
+insert into Relatorios values ("1",'Jose da silva','Rodrigo','Jack Daniels','destilados',"2",'sao paulo',"12","2020/12/04");
+
+
+CREATE TABLE produto (
+    id_produto integer,
+    nomeProduto varchar(50),
+    precoProduto int,
+    quantidade integer,
+    categoria varchar(100),
+    descricao varchar(1000)
+);
+insert into Produto values ("1",'Jack Daniels',"199","50",'destilados','whisky 12 anos');
+
+CREATE TABLE cliente (
+    id_cliente int not null auto_increment PRIMARY KEY,
+    nome_cliente varchar(50),
+    cpf bigint(50),
+    rg bigint(50),
+    telefone varchar(100),
+    email varchar(500),
+    endereco varchar(1000),
+    numero integer(15),
+    estado varchar(50)
+);
+insert into cliente values("1",'Rodrigo',"49071338800","5013947200","942211106",'teste@gmail.com','Julio de barros',"373",'Sao Paulo');
+insert into cliente values("4",'Rodrigo',"49071322800","5013947122","942211106",'rodrigo@gmail.com','Julio de barros',"373",'Sao Paulo');
+
+CREATE TABLE venda(
+id_venda int primary key not null,
+id_cliente int,
+id_vendedor int,
+id_produto integer,
+qtdVenda  integer(250),
+data_venda date,
+FOREIGN KEY(id_cliente) REFERENCES cliente (id_cliente),
+FOREIGN KEY(id_vendedor) REFERENCES vendedor (id_vendedor),
+FOREIGN KEY(id_produto) REFERENCES produto (id_produto)
+);
+insert into venda values ("1","2","1","1","25","2020/12/04");
